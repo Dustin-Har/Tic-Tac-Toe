@@ -1,0 +1,55 @@
+body {
+  background-color: #363A3E;
+  font-size: 2em;
+  margin: 0;
+}
+
+.game-screen {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  height: 25em;
+}
+
+/*~~~~~Player 1 Side~~~~~*/
+
+.player1-side {
+  color: #CDCDCD;
+  display: flex;
+  flex-direction: column;
+  width: 20%
+}
+
+/*~~~~Game Section~~~~~*/
+
+.game-section {
+  color: #363A3E;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 50%;
+  background-color: #FFFFFF;
+
+}
+
+
+
+.game-board {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+  width: 100%;
+  border: solid 2px #0F1AD8;
+  height: 16em;
+}
+
+/*~~~~~Player 2 Side~~~~~*/
+
+.player2-side {
+  color: #CDCDCD;
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+}
