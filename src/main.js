@@ -17,7 +17,7 @@ box9.querySelector("#box9");
 window.addEventListener("onload", displayTurn);
 
 gameBoard.addEventListener("click", function(){
-  playGame(event)
+  checkTurn()
 });
 
 //FUNCTIONS
@@ -35,16 +35,20 @@ function gameStart() {
 function checkTurn() {
   newGame.switchTurns();
   if (newGame.player1.turn === true) {
-    return newGame.player1.token;
+    changeTurn(newGame.player1.token, newGame.player2.token);
   } else if (newGame.player2.turn === true) {
-    return newGame.player2.token;
+    changeTurn(newGame.player2.token, newGame.player1.token);
   }
 }
 
-function playGame(event) {
-  event.target.text = `🥺`;
+function displayTurn() {
+
+}
+
+function changeTurn(token, turn) {
+  event.target.innerText = `${token}`;
   console.log(event);
-  currentTurn.innerHTML = `<h1>It's ${checkTurn()} turn</h1>`;
+  currentTurn.innerText = `It's ${turn} turn`;
 
   //innerHTML board with CheckTurn()
 }
