@@ -1,57 +1,58 @@
 // GLOBAL VARIABLES
 var newGame = new Game();
 //QUERY SELECTOR
-gameBoard.querySelector("#gameBoard");
-currentTurn.querySelector("#playersTurn");
-box1.querySelector("#box1");
-box2.querySelector("#box2");
-box3.querySelector("#box3");
-box4.querySelector("#box4");
-box5.querySelector("#box5");
-box6.querySelector("#box6");
-box7.querySelector("#box7");
-box8.querySelector("#box8");
-box9.querySelector("#box9");
+var gameBoard = document.getElementById("gameBoard");
+var currentTurn = document.getElementById("playersTurn");
+var player1Wins = document.getElementById("pl1Wins");
+var player2Wins = document.getElementById("pl2Wins");
+var box1 = document.getElementById("box1");
+var box2 = document.getElementById("box2");
+var box3 = document.getElementById("box3");
+var box4 = document.getElementById("box4");
+var box5 = document.getElementById("box5");
+var box6 = document.getElementById("box6");
+var box7 = document.getElementById("box7");
+var box8 = document.getElementById("box8");
+var box9 = document.getElementById("box9");
 //EVENT LISTENERS
 // window.addEventListener("onload", getStorage);
-window.addEventListener("onload", displayTurn);
+window.addEventListener("load", gameStart);
+gameBoard.addEventListener("click", changeTurn);
 
-gameBoard.addEventListener("click", function(){
-  checkTurn()
-});
-
-//FUNCTIONS
-
-// function getStorage() {
-//   // JSON.parse(localStorage.getItem("games")) || [];
-//   newGame.saveToStorage();
-// }
 
 //switch players. make 2 instances of player. then after every click
 //switch to other character
 function gameStart() {
+  console.log("BITCH");
+  player1Wins.innerText = `${newGame.player1.wins} wins`;
+  player2Wins.innerText = `${newGame.player2.wins} wins`;
 }
 
-function checkTurn() {
+function changeTurn() {
+  if (newGame.currentTurn === newGame.player1) {
+    playGame(event, newGame.player1.token, newGame.player2.token);
+  } else if (newGame.currentTurn === newGame.player2) {
+    playGame(event, newGame.player2.token, newGame.player1.token);
+  }
   newGame.switchTurns();
-  if (newGame.player1.turn === true) {
-    changeTurn(newGame.player1.token, newGame.player2.token);
-  } else if (newGame.player2.turn === true) {
-    changeTurn(newGame.player2.token, newGame.player1.token);
+}
+
+function playGame(event, token, turn) {
+  if (event.target.innerText === "") {
+    event.target.innerText = `${token}`;
+  }
+  checkWin(token, turn);
+}
+
+function checkWin(token, turn) {
+  if (newGame.checkWinConditions(token)) {
+    currentTurn.innerText = `${token} WON!`;
+  } else {
+    currentTurn.innerText = `It's ${turn} turn`;
   }
 }
 
-function displayTurn() {
 
-}
+//innerHTML board with CheckTurn()
 
-function changeTurn(token, turn) {
-  event.target.innerText = `${token}`;
-  console.log(event);
-  currentTurn.innerText = `It's ${turn} turn`;
-
-  //innerHTML board with CheckTurn()
-}
-
-function displayTurn() {
-}
+function displayTurn() {}
