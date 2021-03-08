@@ -2,16 +2,18 @@ class Game {
   constructor() {
     this.player1 = new Player("⛩");
     this.player2 = new Player("🗽");
-    this.WinConditions = [
-      [box1, box2, box3],
-      [box4, box5, box6],
-      [box7, box8, box9],
-      [box1, box4, box7],
-      [box2, box5, box8],
-      [box3, box6, box9],
-      [box1, box5, box9],
-      [box3, box5, box7],
-    ]
+    this.currentTurn = this.player1;
+    this.board = [
+      {id: 0, token: ""},
+      {id: 1, token: ""},
+      {id: 2, token: ""},
+      {id: 3, token: ""},
+      {id: 4, token: ""},
+      {id: 5, token: ""},
+      {id: 6, token: ""},
+      {id: 7, token: ""},
+      {id: 8, token: ""},
+    ];
   }
 
   saveToStorage() {
@@ -19,21 +21,34 @@ class Game {
   }
 
   switchTurns() {
-    if (this.player1.turn === false) {
-      this.player1.turn = true;
-      this.player2.turn = false;
-    } else if (this.player2.turn === false) {
-      this.player1.turn = false;
-      this.player2.turn = true;
+    if (this.currentTurn === this.player1) {
+      this.currentTurn = this.player2;
+    } else if (this.currentTurn === this.player2) {
+      this.currentTurn = this.player1;
     }
   }
 
-  // checkWinConditions() {
-  //   if()
-  // }
+  checkWinConditions(token) {
+    var winOptions = [
+      [this.board[0].token === token, this.board[1].token === token, this.board[2].token === token],
+      [this.board[3].token === token, this.board[4].token === token, this.board[5].token === token],
+      [this.board[6].token === token, this.board[7].token === token, this.board[8].token === token],
+      [this.board[0].token === token, this.board[3].token === token, this.board[6].token === token],
+      [this.board[1].token === token, this.board[4].token === token, this.board[7].token === token],
+      [this.board[3].token === token, this.board[5].token === token, this.board[8].token === token],
+      [this.board[0].token === token, this.board[4].token === token, this.board[8].token === token],
+      [this.board[2].token === token, this.board[4].token === token, this.board[6].token === token],
+    ]
+    for (var i = 0; i < winOptions.length; i++) {
+      if((winOptions[i][0] === true) && (winOptions[i][1] === true) && (winOptions[i][2] === true)) {
+        this.currentTurn.wins++;
+        return true;
+      }
+    }
+  }
 
-  // resetGame() {
-  //
+  // resetGame(space) {
+  //   space.innerText = "";
   // }
 
   // setTimeout(function() {
