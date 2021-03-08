@@ -5,11 +5,10 @@ var gameBoard = document.getElementById("gameBoard");
 var currentTurn = document.getElementById("playersTurn");
 var player1Wins = document.getElementById("pl1Wins");
 var player2Wins = document.getElementById("pl2Wins");
+var box = document.querySelectorAll(".box");
 
 //EVENT LISTENERS
 // window.addEventListener("onload", getStorage);
-window.addEventListener("onload", displayTurn);
-
 gameBoard.addEventListener("click", function() {
   checkTurn()
 });
@@ -38,10 +37,10 @@ function checkTurn() {
 }
 
 function playGame(event, token, turn) {
-  var index = event.target.closest(".box").id;
-  if (newGame.board[index].id === parseInt(index)) {
+  var index = event.target.closest(".box");
+  if (newGame.board[index.id].id === parseInt(index.id) && (index.innerText === "")) {
     event.target.closest(".box").innerText = `${token}`;
-    newGame.board[index].token = `${token}`;
+    newGame.board[parseInt(index.id)].token = token;
   }
   checkWin(token, turn);
 }
@@ -50,17 +49,22 @@ function playGame(event, token, turn) {
 function checkWin(token, turn) {
   if (newGame.checkWinConditions(token)) {
     currentTurn.innerText = `${token} WON!`;
-    // resetBoard();
+    newGame.resetGame();
+    window.setTimeout(clearBoard, 2000);
+    box.disabled = true;
   } else {
     currentTurn.innerText = `It's ${turn} turn`;
   }
 }
 
-// function resetBoard() {
-//   for (var i = 0; i < board.length; i++) {
-//     setTimeout(newGame.resetGame(board[i]), 4000);
-//   }
-// }
+function clearBoard(turn) {
+  // currentTurn.innerText = `It's ${turn} turn`;
+  for (var i = 0; i < box.length; i++) {
+    box[i].innerText = "";
+    currentTurn.innerText = `It's ${newGame.currentTurn.token} turn`;
+  }
+}
+
 
 
 //innerHTML board with CheckTurn()

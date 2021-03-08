@@ -1,8 +1,9 @@
 class Game {
   constructor() {
-    this.player1 = new Player("⛩");
-    this.player2 = new Player("🗽");
+    this.player1 = new Player("🪱");
+    this.player2 = new Player("🦅");
     this.currentTurn = this.player1;
+    this.turns = 0;
     this.board = [
       {id: 0, token: ""},
       {id: 1, token: ""},
@@ -47,9 +48,11 @@ class Game {
     }
   }
 
-  // resetGame(space) {
-  //   space.innerText = "";
-  // }
+  resetGame() {
+    for (var i = 0; i < this.board; i++) {
+      this.board[i].token = ""
+    }
+  }
 
   // setTimeout(function() {
   // console.log("WINNER!"); }, 1000);
