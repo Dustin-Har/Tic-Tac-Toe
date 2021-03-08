@@ -27,6 +27,7 @@ class Game {
     } else if (this.currentTurn === this.player2) {
       this.currentTurn = this.player1;
     }
+
   }
 
   checkWinConditions(token) {
@@ -48,13 +49,22 @@ class Game {
     }
   }
 
-  resetGame() {
-    for (var i = 0; i < this.board; i++) {
-      this.board[i].token = ""
-    }
+  addTurn() {
+    this.turns++
+    console.log(this.turns);
   }
 
-  // setTimeout(function() {
-  // console.log("WINNER!"); }, 1000);
-  //   }
+  resetGame() {
+    for (var i = 0; i < this.board.length; i++) {
+      this.board[i].token = ""
+    }
+    this.turns = 0;
+  }
+
+  drawGame() {
+    if (this.turns === 9) {
+      console.log("Draw");
+      return true
+    }
+  }
 }

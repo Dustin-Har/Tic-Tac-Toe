@@ -10,7 +10,7 @@ var box = document.querySelectorAll(".box");
 //EVENT LISTENERS
 // window.addEventListener("onload", getStorage);
 gameBoard.addEventListener("click", function() {
-  checkTurn()
+  checkBox(event)
 });
 
 //FUNCTIONS
@@ -20,11 +20,14 @@ gameBoard.addEventListener("click", function() {
 //   newGame.saveToStorage();
 // }
 
-//switch players. make 2 instances of player. then after every click
-//switch to other character
 function gameStart() {
   player1Wins.innerText = `${newGame.player1.wins} wins`;
   player2Wins.innerText = `${newGame.player2.wins} wins`;
+}
+
+function checkBox(event) {
+  if (event.target.closest(".box").innerText === "")
+  checkTurn();
 }
 
 function checkTurn() {
@@ -41,6 +44,7 @@ function playGame(event, token, turn) {
   if (newGame.board[index.id].id === parseInt(index.id) && (index.innerText === "")) {
     event.target.closest(".box").innerText = `${token}`;
     newGame.board[parseInt(index.id)].token = token;
+    newGame.addTurn();
   }
   checkWin(token, turn);
 }
@@ -48,26 +52,23 @@ function playGame(event, token, turn) {
 
 function checkWin(token, turn) {
   if (newGame.checkWinConditions(token)) {
+    console.log("win");
     currentTurn.innerText = `${token} WON!`;
     newGame.resetGame();
     window.setTimeout(clearBoard, 2000);
-    box.disabled = true;
+  } else if (newGame.drawGame()){
+    console.log("made it");
+    currentTurn.innerText = `It's a DRAW!`;
+    newGame.resetGame();
+    window.setTimeout(clearBoard, 2000);
   } else {
     currentTurn.innerText = `It's ${turn} turn`;
   }
 }
 
-function clearBoard(turn) {
-  // currentTurn.innerText = `It's ${turn} turn`;
+function clearBoard() {
   for (var i = 0; i < box.length; i++) {
     box[i].innerText = "";
     currentTurn.innerText = `It's ${newGame.currentTurn.token} turn`;
   }
 }
-
-
-
-//innerHTML board with CheckTurn()
-
-
-function displayTurn() {}
