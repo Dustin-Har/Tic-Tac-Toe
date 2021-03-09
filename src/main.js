@@ -1,20 +1,21 @@
-// GLOBAL VARIABLES
+
 var newGame = new Game();
-//QUERY SELECTOR
+
 var gameBoard = document.getElementById("gameBoard");
 var currentTurn = document.getElementById("playersTurn");
 var player1Wins = document.getElementById("pl1Wins");
 var player2Wins = document.getElementById("pl2Wins");
 var box = document.querySelectorAll(".box");
 
-//EVENT LISTENERS
+
 window.addEventListener("load", startGame);
 gameBoard.addEventListener("click", checkBox);
 
-//FUNCTIONS
+
 function startGame() {
   showWins(newGame.player1.retreiveWinsFromStorage(), newGame.player2.retreiveWinsFromStorage());
   newGame.resetGame();
+  showTurn();
 }
 
 function checkBox(event) {
@@ -68,12 +69,12 @@ function resetBoard() {
 function clearBoard() {
   for (var i = 0; i < box.length; i++) {
     box[i].innerText = "";
-    currentTurn.innerText = `It's ${newGame.currentTurn.token} turn`;
+    showTurn()
     gameBoard.addEventListener("click", checkBox);
     startGame();
   }
 }
 
-function saveWins() {
-
+function showTurn() {
+  currentTurn.innerText = `It's ${newGame.currentTurn.token} turn`;
 }
