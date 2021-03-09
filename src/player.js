@@ -9,6 +9,6 @@ class Player {
   }
 
   retreiveWinsFromStorage() {
-    localStorage.setItem("newGame", JSON.stringify(newGame));
+    JSON.parse(localStorage.getItem("newGame"))
   }
 }
