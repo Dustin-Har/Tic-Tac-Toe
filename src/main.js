@@ -57,15 +57,6 @@ function checkBoard(token, turn) {
   }
 }
 
-function clearBoard() {
-  for (var i = 0; i < box.length; i++) {
-    box[i].innerText = "";
-    currentTurn.innerText = `It's ${newGame.currentTurn.token} turn`;
-    gameBoard.addEventListener("click", checkBox);
-    startGame();
-  }
-}
-
 function showWins(player1, player2) {
   player1Wins.innerText = `${player1} wins`;
   player2Wins.innerText = `${player2} wins`;
@@ -74,4 +65,13 @@ function showWins(player1, player2) {
 function resetBoard(){
   gameBoard.removeEventListener("click", checkBox);
   window.setTimeout(clearBoard, 2000);
+}
+
+function clearBoard() {
+  for (var i = 0; i < box.length; i++) {
+    box[i].innerText = "";
+    currentTurn.innerText = `It's ${newGame.currentTurn.token} turn`;
+    gameBoard.addEventListener("click", checkBox);
+    startGame();
+  }
 }
