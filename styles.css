@@ -51,70 +51,64 @@ body {
 
 /*~~~~~~~~~BOXES~~~~~~~~~*/
 
-.box1,
-.box2,
-.box3,
-.box4,
-.box5,
-.box6,
-.box7,
-.box8,
-.box9 {
+
+.box {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+
   width: 32%;
   height: 33%;
   font-size: 342%;
   /* border: solid 2px #0F1AD8; */
 }
 
-.box1 {
+.box:nth-child(1) {
   border-right: solid 2px #0F1AD8;
   border-bottom: solid 2px #0F1AD8;
 }
 
-.box2 {
+.box:nth-child(2) {
   border-left: solid 2px #0F1AD8;
   border-right: solid 2px #0F1AD8;
   border-bottom: solid 2px #0F1AD8;
 }
 
-.box3 {
+.box:nth-child(3){
   border-left: solid 2px #0F1AD8;
   border-bottom: solid 2px #0F1AD8;
 }
 
-.box4 {
+.box:nth-child(4) {
   border-top: solid 2px #0F1AD8;
   border-right: solid 2px #0F1AD8;
   border-bottom: solid 2px #0F1AD8;
 }
 
-.box5 {
+.box:nth-child(5) {
   border: solid 2px #0F1AD8;
 }
 
-.box6 {
+.box:nth-child(6) {
   border-top: solid 2px #0F1AD8;
   border-left: solid 2px #0F1AD8;
   border-bottom: solid 2px #0F1AD8;
 }
 
-.box7 {
+.box:nth-child(7) {
   border-top: solid 2px #0F1AD8;
   border-right: solid 2px #0F1AD8;
 }
 
-.box8 {
+.box:nth-child(8) {
   border-top: solid 2px #0F1AD8;
   border-left: solid 2px #0F1AD8;
   border-right: solid 2px #0F1AD8;
 }
 
-.box9 {
+.box:nth-child(9) {
   border-top: solid 2px #0F1AD8;
   border-left: solid 2px #0F1AD8;
 }

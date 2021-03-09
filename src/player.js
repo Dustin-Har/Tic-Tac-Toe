@@ -5,7 +5,6 @@ class Player {
   }
 
   saveWinsToStorage() {
-    this.wins++
     localStorage.setItem("newGame", JSON.stringify(newGame));
   }
 

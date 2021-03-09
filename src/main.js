@@ -5,30 +5,36 @@ var gameBoard = document.getElementById("gameBoard");
 var currentTurn = document.getElementById("playersTurn");
 var player1Wins = document.getElementById("pl1Wins");
 var player2Wins = document.getElementById("pl2Wins");
-var box1 = document.getElementById("box1");
-var box2 = document.getElementById("box2");
-var box3 = document.getElementById("box3");
-var box4 = document.getElementById("box4");
-var box5 = document.getElementById("box5");
-var box6 = document.getElementById("box6");
-var box7 = document.getElementById("box7");
-var box8 = document.getElementById("box8");
-var box9 = document.getElementById("box9");
+
+var box = document.querySelectorAll(".box");
+
 //EVENT LISTENERS
 // window.addEventListener("onload", getStorage);
-window.addEventListener("load", gameStart);
-gameBoard.addEventListener("click", changeTurn);
+gameBoard.addEventListener("click", function() {
+  checkBox(event)
+});
+
+//FUNCTIONS
+
+// function getStorage() {
+//   // JSON.parse(localStorage.getItem("games")) || [];
+//   newGame.saveToStorage();
+// }
 
 
-//switch players. make 2 instances of player. then after every click
-//switch to other character
 function gameStart() {
-  console.log("BITCH");
+
   player1Wins.innerText = `${newGame.player1.wins} wins`;
   player2Wins.innerText = `${newGame.player2.wins} wins`;
 }
 
-function changeTurn() {
+function checkBox(event) {
+  if (event.target.closest(".box").innerText === "")
+  checkTurn();
+}
+
+function checkTurn() {
+
   if (newGame.currentTurn === newGame.player1) {
     playGame(event, newGame.player1.token, newGame.player2.token);
   } else if (newGame.currentTurn === newGame.player2) {
@@ -38,21 +44,35 @@ function changeTurn() {
 }
 
 function playGame(event, token, turn) {
-  if (event.target.innerText === "") {
-    event.target.innerText = `${token}`;
+  var index = event.target.closest(".box");
+  if (newGame.board[index.id].id === parseInt(index.id) && (index.innerText === "")) {
+    event.target.closest(".box").innerText = `${token}`;
+    newGame.board[parseInt(index.id)].token = token;
+    newGame.addTurn();
   }
   checkWin(token, turn);
 }
 
+
 function checkWin(token, turn) {
   if (newGame.checkWinConditions(token)) {
+    console.log("win");
     currentTurn.innerText = `${token} WON!`;
+    newGame.resetGame();
+    window.setTimeout(clearBoard, 2000);
+  } else if (newGame.drawGame()){
+    console.log("made it");
+    currentTurn.innerText = `It's a DRAW!`;
+    newGame.resetGame();
+    window.setTimeout(clearBoard, 2000);
   } else {
     currentTurn.innerText = `It's ${turn} turn`;
   }
 }
 
-
-//innerHTML board with CheckTurn()
-
-function displayTurn() {}
+function clearBoard() {
+  for (var i = 0; i < box.length; i++) {
+    box[i].innerText = "";
+    currentTurn.innerText = `It's ${newGame.currentTurn.token} turn`;
+  }
+}

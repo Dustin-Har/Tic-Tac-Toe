@@ -1,19 +1,21 @@
 class Game {
   constructor() {
-    this.player1 = new Player("⛩");
-    this.player2 = new Player("🗽");
+    this.player1 = new Player("🪱");
+    this.player2 = new Player("🦅");
     this.currentTurn = this.player1;
+    this.turns = 0;
+    this.board = [
+      {id: 0, token: ""},
+      {id: 1, token: ""},
+      {id: 2, token: ""},
+      {id: 3, token: ""},
+      {id: 4, token: ""},
+      {id: 5, token: ""},
+      {id: 6, token: ""},
+      {id: 7, token: ""},
+      {id: 8, token: ""},
+    ];
 
-    // this.WinConditions = [
-    //   [box1, box2, box3],
-    //   [box4, box5, box6],
-    //   [box7, box8, box9],
-    //   [box1, box4, box7],
-    //   [box2, box5, box8],
-    //   [box3, box6, box9],
-    //   [box1, box5, box9],
-    //   [box3, box5, box7],
-    // ]
   }
 
   saveToStorage() {
@@ -25,19 +27,19 @@ class Game {
       this.currentTurn = this.player2;
     } else if (this.currentTurn === this.player2) {
       this.currentTurn = this.player1;
-    }
   }
+
 
   checkWinConditions(token) {
     var winOptions = [
-      [box1.innerText === token, box2.innerText === token, box3.innerText === token],
-      [box4.innerText === token, box5.innerText === token, box6.innerText === token],
-      [box7.innerText === token, box8.innerText === token, box9.innerText === token],
-      [box1.innerText === token, box4.innerText === token, box7.innerText === token],
-      [box2.innerText === token, box5.innerText === token, box8.innerText === token],
-      [box3.innerText === token, box6.innerText === token, box9.innerText === token],
-      [box1.innerText === token, box5.innerText === token, box9.innerText === token],
-      [box3.innerText === token, box5.innerText === token, box7.innerText === token],
+      [this.board[0].token === token, this.board[1].token === token, this.board[2].token === token],
+      [this.board[3].token === token, this.board[4].token === token, this.board[5].token === token],
+      [this.board[6].token === token, this.board[7].token === token, this.board[8].token === token],
+      [this.board[0].token === token, this.board[3].token === token, this.board[6].token === token],
+      [this.board[1].token === token, this.board[4].token === token, this.board[7].token === token],
+      [this.board[3].token === token, this.board[5].token === token, this.board[8].token === token],
+      [this.board[0].token === token, this.board[4].token === token, this.board[8].token === token],
+      [this.board[2].token === token, this.board[4].token === token, this.board[6].token === token],
     ]
     for (var i = 0; i < winOptions.length; i++) {
       if((winOptions[i][0] === true) && (winOptions[i][1] === true) && (winOptions[i][2] === true)) {
@@ -47,12 +49,22 @@ class Game {
     }
   }
 
+  addTurn() {
+    this.turns++
+    console.log(this.turns);
+  }
 
-  // resetGame() {
-  //
-  // }
+  resetGame() {
+    for (var i = 0; i < this.board.length; i++) {
+      this.board[i].token = ""
+    }
+    this.turns = 0;
+  }
 
-  // setTimeout(function() {
-  // console.log("WINNER!"); }, 1000);
-  //   }
+  drawGame() {
+    if (this.turns === 9) {
+      console.log("Draw");
+      return true
+    }
+  }
 }
