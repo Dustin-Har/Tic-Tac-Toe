@@ -5,6 +5,7 @@ var gameBoard = document.getElementById("gameBoard");
 var currentTurn = document.getElementById("playersTurn");
 var player1Wins = document.getElementById("pl1Wins");
 var player2Wins = document.getElementById("pl2Wins");
+
 var box = document.querySelectorAll(".box");
 
 //EVENT LISTENERS
@@ -20,7 +21,9 @@ gameBoard.addEventListener("click", function() {
 //   newGame.saveToStorage();
 // }
 
+
 function gameStart() {
+
   player1Wins.innerText = `${newGame.player1.wins} wins`;
   player2Wins.innerText = `${newGame.player2.wins} wins`;
 }
@@ -31,6 +34,7 @@ function checkBox(event) {
 }
 
 function checkTurn() {
+
   if (newGame.currentTurn === newGame.player1) {
     playGame(event, newGame.player1.token, newGame.player2.token);
   } else if (newGame.currentTurn === newGame.player2) {

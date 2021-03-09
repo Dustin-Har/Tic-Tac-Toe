@@ -15,6 +15,7 @@ class Game {
       {id: 7, token: ""},
       {id: 8, token: ""},
     ];
+
   }
 
   saveToStorage() {
@@ -26,9 +27,8 @@ class Game {
       this.currentTurn = this.player2;
     } else if (this.currentTurn === this.player2) {
       this.currentTurn = this.player1;
-    }
-
   }
+
 
   checkWinConditions(token) {
     var winOptions = [

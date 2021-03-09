@@ -31,7 +31,10 @@ body {
   justify-content: space-evenly;
   width: 50%;
   background-color: #FFFFFF;
+}
 
+.currentTurn {
+  font-size: 169%;
 }
 
 
@@ -55,6 +58,7 @@ body {
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+
   width: 32%;
   height: 33%;
   font-size: 342%;
