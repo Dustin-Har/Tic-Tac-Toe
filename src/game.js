@@ -37,7 +37,7 @@ class Game {
       [this.board[6].token === token, this.board[7].token === token, this.board[8].token === token],
       [this.board[0].token === token, this.board[3].token === token, this.board[6].token === token],
       [this.board[1].token === token, this.board[4].token === token, this.board[7].token === token],
-      [this.board[3].token === token, this.board[5].token === token, this.board[8].token === token],
+      [this.board[2].token === token, this.board[5].token === token, this.board[8].token === token],
       [this.board[0].token === token, this.board[4].token === token, this.board[8].token === token],
       [this.board[2].token === token, this.board[4].token === token, this.board[6].token === token],
     ]
@@ -51,7 +51,6 @@ class Game {
 
   addTurn() {
     this.turns++
-    console.log(this.turns);
   }
 
   resetGame() {
@@ -63,7 +62,6 @@ class Game {
 
   drawGame() {
     if (this.turns === 9) {
-      console.log("Draw");
       return true
     }
   }
