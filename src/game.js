@@ -27,7 +27,6 @@ class Game {
     } else if (this.currentTurn === this.player2) {
       this.currentTurn = this.player1;
     }
-
   }
 
   checkWinConditions(token) {

@@ -12,8 +12,6 @@ window.addEventListener("load", startGame);
 gameBoard.addEventListener("click", checkBox);
 
 //FUNCTIONS
-
-
 function startGame() {
   showWins(newGame.player1.wins, newGame.player2.wins);
   newGame.resetGame();
@@ -44,12 +42,11 @@ function placeToken(event, token, turn) {
   checkBoard(token, turn);
 }
 
-
 function checkBoard(token, turn) {
   if (newGame.checkWinConditions(token)) {
     currentTurn.innerText = `${token} WON!`;
     resetBoard();
-  } else if (newGame.drawGame()){
+  } else if (newGame.drawGame()) {
     currentTurn.innerText = `It's a DRAW!`;
     resetBoard();
   } else {
@@ -62,7 +59,7 @@ function showWins(player1, player2) {
   player2Wins.innerText = `${player2} wins`;
 }
 
-function resetBoard(){
+function resetBoard() {
   gameBoard.removeEventListener("click", checkBox);
   window.setTimeout(clearBoard, 2000);
 }
