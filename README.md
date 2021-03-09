@@ -25,17 +25,17 @@
 
 
 ### Player 1(worm) will start the game first when page loads.
-    <img width="1431" alt="Screen Shot 2021-03-09 at 4 47 17 PM" src="https://user-images.githubusercontent.com/75390410/110544403-a944c300-80f9-11eb-8545-01e3d845fe67.png">
+   <img width="1431" alt="Screen Shot 2021-03-09 at 4 47 17 PM" src="https://user-images.githubusercontent.com/75390410/110544403-a944c300-80f9-11eb-8545-01e3d845fe67.png">
     
     
     
 ### By clicking on one of the tiles. the players token will take over that spot and the game will infom you whos turn it is now.
-    <img width="1431" alt="Screen Shot 2021-03-09 at 4 47 49 PM" src="https://user-images.githubusercontent.com/75390410/110544534-e0b36f80-80f9-11eb-908f-aceb39c9d8ab.png">
+   <img width="1431" alt="Screen Shot 2021-03-09 at 4 47 49 PM" src="https://user-images.githubusercontent.com/75390410/110544534-e0b36f80-80f9-11eb-908f-aceb39c9d8ab.png">
     
     
     
 ### If there is winner that will end the first game. after 2 seconds of the winning move taken. the game will be cleared and then next player will start.
-    <img width="1431" alt="Screen Shot 2021-03-09 at 4 48 16 PM" src="https://user-images.githubusercontent.com/75390410/110544669-21ab8400-80fa-11eb-8b97-5c86dec06dcd.png">
+   <img width="1431" alt="Screen Shot 2021-03-09 at 4 48 16 PM" src="https://user-images.githubusercontent.com/75390410/110544669-21ab8400-80fa-11eb-8b97-5c86dec06dcd.png">
     
    <img width="1432" alt="Screen Shot 2021-03-09 at 4 48 43 PM" src="https://user-images.githubusercontent.com/75390410/110544699-2d974600-80fa-11eb-98ad-afbf432b67c4.png">
     
