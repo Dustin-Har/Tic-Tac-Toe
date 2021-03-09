@@ -13,7 +13,7 @@ gameBoard.addEventListener("click", checkBox);
 
 //FUNCTIONS
 function startGame() {
-  showWins(newGame.player1.wins, newGame.player2.wins);
+  showWins(newGame.player1.retreiveWinsFromStorage(), newGame.player2.retreiveWinsFromStorage());
   newGame.resetGame();
 }
 
@@ -34,7 +34,7 @@ function checkTurn() {
 
 function placeToken(event, token, turn) {
   var index = event.target.closest(".box");
-  if (newGame.board[index.id].id === parseInt(index.id) {
+  if (newGame.board[index.id].id === parseInt(index.id)) {
     event.target.closest(".box").innerText = `${token}`;
     newGame.board[parseInt(index.id)].token = token;
     newGame.addTurn();
@@ -60,6 +60,7 @@ function showWins(player1, player2) {
 }
 
 function resetBoard() {
+  newGame.saveWins();
   gameBoard.removeEventListener("click", checkBox);
   window.setTimeout(clearBoard, 2000);
 }
@@ -71,4 +72,8 @@ function clearBoard() {
     gameBoard.addEventListener("click", checkBox);
     startGame();
   }
+}
+
+function saveWins() {
+
 }

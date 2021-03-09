@@ -64,4 +64,8 @@ class Game {
       return true
     }
   }
+
+  saveWins() {
+    this.currentTurn.saveWinsToStorage();
+  }
 }
