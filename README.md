@@ -42,7 +42,7 @@
    
    
 ### If there is a draw then the game will be cleared and the next player will start the next game.
-    <img width="1433" alt="Screen Shot 2021-03-09 at 4 49 10 PM" src="https://user-images.githubusercontent.com/75390410/110544838-5ae3f400-80fa-11eb-9fc5-1350ccb2f018.png"> 
+   <img width="1433" alt="Screen Shot 2021-03-09 at 4 49 10 PM" src="https://user-images.githubusercontent.com/75390410/110544838-5ae3f400-80fa-11eb-9fc5-1350ccb2f018.png"> 
     
     
 ----------------------------------------------------------
